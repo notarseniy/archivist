@@ -31,8 +31,8 @@ class ImageEditor extends Component {
   }
 
   didUpdate() {
-    console.log('didUpdate');
-    if (!this.props.multiple && this.state.images.length) {
+    console.log('didUpdate', this.props);
+    if (!this.props.multiple && !this.state.images.length) {
       this.uploadcare = uploadcare.SingleWidget('.se-image-add-uc');
       
       this.uploadcare.onUploadComplete((upload) => {
