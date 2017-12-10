@@ -149,6 +149,7 @@ class DocumentStore {
     
     this.documentExists(documentId, function(err, exists) {
       if (err) {
+        console.error(err);
         return cb(new Err('DocumentStore.UpdateError', {
           cause: err
         }))
