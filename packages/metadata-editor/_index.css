@@ -34,6 +34,82 @@
   min-height: inherit;
 }
 
+.sc-metadata-editor .se-field-editor.se-images-editor .se-image-item {
+  margin-bottom: 20px;
+}
+
+.sc-metadata-editor .se-field-editor.se-images-editor .se-image-item-img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.sc-metadata-editor .se-field-editor.se-images-editor .se-image-item-title {
+  width: 100%;
+}
+
+.sc-metadata-editor .se-field-editor.se-images-editor .se-image-item-settings {
+  width: 100%;
+  margin-top: 4px;
+
+  font-size: 14px;
+}
+
+.sc-metadata-editor .se-field-editor.se-images-editor .se-image-item-settings button {
+  display: inline-block;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.sc-metadata-editor .se-field-editor.se-images-editor .se-image-item-settings .se-image-item-settings-move-top {
+  margin-right: 10px;
+}
+
+.sc-metadata-editor .se-field-editor.se-images-editor .se-image-item-settings .se-image-item-settings-move-down {
+  
+}
+
+.sc-metadata-editor .se-field-editor.se-images-editor .se-image-item-settings .se-image-item-settings-delete {
+  float: right;
+  color: red;
+}
+
+.sc-metadata-editor .se-field-editor.se-images-editor .se-image-item-settings .hidden {
+  opacity: 0;
+  cursor: default !important;
+}
+.sc-metadata-editor .se-field-editor.se-publications-editor {
+  margin-bottom: 10px;
+}
+
+.sc-metadata-editor .se-field-editor.se-publications-editor .se-publication-item {
+  margin-bottom: 20px;
+}
+
+.sc-metadata-editor .se-field-editor.se-publications-editor *:nth-last-child(2) {
+  margin-bottom: 0px;
+}
+
+.sc-metadata-editor .se-field-editor.se-publications-editor .se-publication-item * {
+  display: block;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.sc-metadata-editor .se-field-editor.se-publications-editor .se-publication-item .slick-prev {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  height: 100%;
+  width: 75px;
+}
+
+.sc-metadata-editor .se-field-editor.se-publications-editor .se-publication-item .slick-next {
+  
+}
+
+
 .sc-metadata-editor .se-field-editor .sc-select-editor select {
   width: 100%;
 }

@@ -39,11 +39,34 @@ class ArchivistDocumentServer extends DocumentServer {
     Get a document with given document id
   */
   _getDocument(req, res, next) {
-    const documentId = req.params.id
-    this.engine.getDocument(documentId, function(err, doc) {
-      if (err) return next(err)
-      res.json(doc)
-    })
+    const getDocument = (documentId) => {
+      this.engine.getDocument(documentId, function(err, doc) {
+        if (err) return next(err)
+        res.json(doc)
+      })
+    };
+    
+    // ?slug=true
+    /*if (this.query.slug) {
+      const query = 'SELECT \
+      d."documentId" as id \
+      FROM documents d \
+      WHERE d."slug" = $1';
+
+      this.db.run(query, [req.params.id], function (err, doc) {
+        if (err) {
+          return next(new Err('ArchivistDocumentServer.getDocumentError', {
+            cause: err
+          }));
+        }
+        
+        getDocument(doc.slug);
+      });
+    } else {*/
+      getDocument(req.params.id);
+    //}
+    
+    
   }
 
   /*

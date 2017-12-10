@@ -8,9 +8,11 @@ class CheckboxEditor extends Component {
   }
 
   didMount() {
+    console.log('this', this);
     let doc = this.context.doc
     let path = this.getPath()
     let value = doc.get(path)
+    console.log('didMount', doc, this.getPath(), value);
     this.setValue(value)
     this.context.editorSession.onRender('document', this._onDocumentChange, this)
   }
@@ -18,6 +20,8 @@ class CheckboxEditor extends Component {
   render($$) {
     let options = this.props.options
     let el = $$('div').addClass('sc-checkbox-editor').ref('input')
+
+    console.log('checkbox props', this.props);
 
     let checkboxes = options.map((item, i) => {
       let label = typeof item === 'string' ? item : item.label
@@ -66,6 +70,7 @@ class CheckboxEditor extends Component {
     let editorSession = this.context.editorSession
     let path = this.getPath()
     let value = this.getValue()
+    console.log('_onClick value', value);
     editorSession.transaction(tx => {
       tx.set(path, value)
     })
