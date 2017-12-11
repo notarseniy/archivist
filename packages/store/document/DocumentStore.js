@@ -140,6 +140,7 @@ class DocumentStore {
     @returns {Callback}
   */
   updateDocument(documentId, props, cb) {
+    console.log('updateDocument', documentId, props);
     if(props.info) {
       if(props.info.title) props.title = props.info.title
       if(props.info.meta) props.meta = props.info.meta
@@ -149,13 +150,14 @@ class DocumentStore {
     
     this.documentExists(documentId, function(err, exists) {
       if (err) {
-        console.error(err);
+        console.error('if err', err);
         return cb(new Err('DocumentStore.UpdateError', {
           cause: err
         }))
       }
 
       if (!exists) {
+        console.error('!exists', err);
         return cb(new Err('DocumentStore.UpdateError', {
           message: 'Document with documentId ' + documentId + ' does not exists'
         }))
@@ -166,6 +168,7 @@ class DocumentStore {
 
       this.db.documents.save(documentData, function(err, doc) {
         if (err) {
+          console.error('save', err);
           return cb(new Err('DocumentStore.UpdateError', {
             cause: err
           }))
