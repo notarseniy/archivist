@@ -187,6 +187,7 @@ class MetadataEditor extends Component {
             }
 
             editorEl.append(
+              label,
               $$(ImageEditor, {
                 name: id,
                 path: ['meta', id],
@@ -231,6 +232,7 @@ class MetadataEditor extends Component {
             }
 
             editorEl.append(
+              label,
               $$(ImageEditor, {
                 name: id,
                 path: ['meta', id],

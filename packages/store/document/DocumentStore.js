@@ -140,7 +140,6 @@ class DocumentStore {
     @returns {Callback}
   */
   updateDocument(documentId, props, cb) {
-    console.log('updateDocument', documentId, props);
     if(props.info) {
       if(props.info.title) props.title = props.info.title
       if(props.info.meta) props.meta = props.info.meta
