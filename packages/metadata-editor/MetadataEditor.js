@@ -208,51 +208,6 @@ class MetadataEditor extends Component {
         }
         break
       }
-      case 'image': {
-        if(field.collapse) {
-          let label = $$('div').addClass('se-collapsible-label')
-          const collapsed = field.collapsed
-          if(collapsed) {
-            label.append(
-              this.context.iconProvider.renderIcon($$, 'collapsed'),
-              this.getLabel(field.collapse)
-            ).on('click', this._toogleCollapse.bind(this, id))
-            editorEl.append(label)
-          } else {
-            label.append(
-              this.context.iconProvider.renderIcon($$, 'expanded'),
-              this.getLabel(field.collapse)
-            ).on('click', this._toogleCollapse.bind(this, id))
-
-            const description = field.description
-            if(description) {
-              editorEl.append(
-                $$('div').addClass('se-description').append(this.getLabel(description))
-              )
-            }
-
-            editorEl.append(
-              label,
-              $$(ImageEditor, {
-                name: id,
-                path: ['meta', id],
-                multiple: field.multiple,
-                title: field.title
-              }).ref(id)
-            ).addClass('se-images-editor')
-          }
-        } else {
-          editorEl.append(
-            $$(ImageEditor, {
-              name: id,
-              path: ['meta', id],
-              multiple: field.multiple,
-              title: field.title
-            }).ref(id)
-          ).addClass('se-images-editor')
-        }
-        break
-      }
       case 'publication': {
         if(field.collapse) {
           let label = $$('div').addClass('se-collapsible-label')
@@ -277,6 +232,7 @@ class MetadataEditor extends Component {
             }
 
             editorEl.append(
+              title,
               $$(PublicationEditor, {
                 name: id,
                 path: ['meta', id],
