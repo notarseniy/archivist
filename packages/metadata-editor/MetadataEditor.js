@@ -232,7 +232,7 @@ class MetadataEditor extends Component {
             }
 
             editorEl.append(
-              title,
+              label,
               $$(PublicationEditor, {
                 name: id,
                 path: ['meta', id],
