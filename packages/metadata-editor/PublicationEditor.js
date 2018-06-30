@@ -36,8 +36,10 @@ class PublicationsEditor extends Component {
       return $$('div').addClass('se-publication-wrapper').addClass('se-publication-item').append(
         $$('div').append((i + 1) + '.'),
         $$('textarea').attr({placeholder: 'Описание' }).addClass('se-publication-item-title').val(item.title).on('change', this._onTitleChange(i)),
+        $$('textarea').attr({placeholder: 'Описание (по-английски)' }).addClass('se-publication-item-title').val(item.title_en).on('change', this._onTitleEnChange(i)),
         $$('textarea').attr({placeholder: 'Ссылка' }).addClass('se-publication-item-url').val(item.url).on('change', this._onUrlChange(i)),
-        $$('textarea').attr({placeholder: 'Описание ссылки' }).addClass('se-publication-item-url-title').val(item.urlTitle).on('change', this._onUrlTitleChange(i))
+        $$('textarea').attr({placeholder: 'Описание ссылки' }).addClass('se-publication-item-url-title').val(item.urlTitle).on('change', this._onUrlTitleChange(i)),
+        $$('textarea').attr({placeholder: 'Описание ссылки (по-английски)' }).addClass('se-publication-item-url-title').val(item.urlTitle_en).on('change', this._onUrlTitleEnChange(i))
       )
     })
 
@@ -74,15 +76,23 @@ class PublicationsEditor extends Component {
 
   _onTitleChange(index) {
     return (event) => {
-      console.log('onTitleChangeEvent', event);
-
       const value = event.target.value;
 
       let publications = this.state.publications.slice();
-      
-      console.log('onTitleChange', index, publications);
 
       publications[index].title = value;
+
+      this._modifyDocument(publications);
+    };
+  }
+
+  _onTitleEnChange(index) {
+    return (event) => {
+      const value = event.target.value;
+
+      let publications = this.state.publications.slice();
+
+      publications[index].title_en = value;
 
       this._modifyDocument(publications);
     };
@@ -90,13 +100,9 @@ class PublicationsEditor extends Component {
   
   _onUrlChange(index) {
     return (event) => {
-      console.log('onTitleChangeEvent', event);
-
       const value = event.target.value;
 
       let publications = this.state.publications.slice();
-      
-      console.log('onTitleChange', index, publications);
 
       publications[index].url = value;
 
@@ -106,15 +112,23 @@ class PublicationsEditor extends Component {
   
   _onUrlTitleChange(index) {
     return (event) => {
-      console.log('onTitleChangeEvent', event);
-
       const value = event.target.value;
 
       let publications = this.state.publications.slice();
-      
-      console.log('onTitleChange', index, publications);
 
       publications[index].urlTitle = value;
+
+      this._modifyDocument(publications);
+    };
+  }
+  
+  _onUrlTitleEnChange(index) {
+    return (event) => {
+      const value = event.target.value;
+
+      let publications = this.state.publications.slice();
+
+      publications[index].urlTitle_en = value;
 
       this._modifyDocument(publications);
     };
@@ -133,7 +147,7 @@ class PublicationsEditor extends Component {
 
   _onDocumentChange(update) {
     let path = this.getPath()
-    console.log('onDocumentChange', path, update);
+
     if (update.updated[path]) {
       let doc = this.context.doc
       let value = doc.get(path)

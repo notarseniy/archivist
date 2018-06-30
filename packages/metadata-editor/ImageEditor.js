@@ -55,7 +55,8 @@ class ImageEditor extends Component {
               item.then((file) => {
                 this._onUpload({
                   url: file.cdnUrl,
-                  title: ''
+                  title: '',
+                  title_en: ''
                 });
               })
             });
@@ -76,6 +77,7 @@ class ImageEditor extends Component {
       return $$('div').addClass('se-image-wrapper').addClass('se-image-item').append(
         $$('img').attr({ src: item.url }).addClass('se-image-item-img'),
         (this.props.title) ? $$('textarea').attr({placeholder: 'Подпись' }).addClass('se-image-item-title').val(item.title).on('change', this._onTitleChange(i)) : null,
+        (this.props.title) ? $$('textarea').attr({placeholder: 'Подпись (по-английски)' }).addClass('se-image-item-title').val(item.title_en).on('change', this._onTitleEnChange(i)) : null,
         $$('div').addClass('se-image-item-settings').append(
           (this.props.multiple) ? $$('button').addClass('se-image-item-settings-move-top').addClass((i === 0) ? 'hidden' : '').on('click', this._onMoveTop(i)).append('↑') : null,
           (this.props.multiple) ? $$('button').addClass('se-image-item-settings-move-down').addClass((i === this.state.images.length - 1) ? 'hidden' : '').on('click', this._onMoveDown(i)).append('↓') : null,
@@ -118,6 +120,22 @@ class ImageEditor extends Component {
       console.log('onTitleChange', index, images);
 
       images[index].title = value;
+
+      this._modifyDocument(images);
+    };
+  }
+
+  _onTitleEnChange(index) {
+    return (event) => {
+      console.log('onTitleChangeEvent', event);
+
+      const value = event.target.value;
+
+      let images = this.state.images.slice();
+      
+      console.log('onTitleChange', index, images);
+
+      images[index].title_en = value;
 
       this._modifyDocument(images);
     };

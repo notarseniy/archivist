@@ -139,7 +139,7 @@ class Inspector extends EventEmitter {
     let config = this.configurator.getAppConfig()
 
     this.conn = new WebSocketConnection({
-      wsUrl: config.wsUrl || 'wss://'+config.host+':'+config.port
+      wsUrl: config.wsUrl || 'ws://'+config.host+':'+config.port
     })
 
     this.collabClient = new CollabClient({

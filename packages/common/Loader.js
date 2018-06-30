@@ -17,7 +17,7 @@ class Loader extends Component {
     let config = this.context.config
 
     this.conn = new WebSocketConnection({
-      wsUrl: config.wsUrl || 'wss://'+config.host+':'+config.port
+      wsUrl: config.wsUrl || 'ws://'+config.host+':'+config.port
     })
 
     this.collabClient = new CollabClient({
